@@ -1,6 +1,6 @@
 class LibraryItem {
-    private String title;
-    private boolean isBarrowed;
+    String title;
+    boolean isBarrowed;
 
     LibraryItem(String title){
         this.title = title;
@@ -17,7 +17,9 @@ class LibraryItem {
 
 class Books extends LibraryItem{
     String author;
-    Books(String author){
+
+    Books(String author, String title){
+        super(title);
         this.author = author;
     }
 }
