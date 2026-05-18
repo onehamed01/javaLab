@@ -15,7 +15,7 @@ class LibraryItem {
 
 }
 
-Books extends LibraryItem{
+class Books extends LibraryItem{
     String author;
     Books(String author){
         this.author = author;
