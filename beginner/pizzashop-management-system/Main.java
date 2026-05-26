@@ -48,9 +48,32 @@ class Order{
         for (Pizza pizzas: orderList){
             System.out.println(pizzas.getPizzaName());
         }
-        System.out.println("Total Price"+ totalPriceCalculator());
-        System.out.println("Order Status: "+orderCompleted());
+        System.out.println("Total Price £"+ totalPriceCalculator());
+        String orderMessage;
+        if (this.statusOrder == false){
+            orderMessage = "Not ready";
+        }
+        else{
+            orderMessage = "Completed";
+        }
+        System.out.println("Order Status: "+orderMessage);
 
     }
 
+}
+
+class Main{
+    public static void main(String[] args){
+        Pizza kebabPizza = new Pizza("Kebab Pizza", 8.80);
+        Pizza bbqChicken = new Pizza("BBQ Chicken Pizza", 13.80);
+        Pizza alfangi = new Pizza("Alfangi Pizza", 8.80);
+
+        Order maty = new Order("Maty");
+        maty.addOrder(kebabPizza);
+        maty.addOrder(bbqChicken);
+        maty.addOrder(alfangi);
+        maty.showOrder();
+
+
+    }
 }
