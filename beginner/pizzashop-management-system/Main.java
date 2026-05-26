@@ -2,71 +2,55 @@ import java.util.ArrayList;
 
 class Pizza{
     private String pizzaName;
-    private double pizzaPrice;
+    private double pizzaPrice; 
 
     Pizza(String pizzaName, double pizzaPrice){
         this.pizzaName = pizzaName;
         this.pizzaPrice = pizzaPrice;
     }
-    double getPizzaPrice(){
-        return this.pizzaPrice;
-    }
+
     String getPizzaName(){
         return this.pizzaName;
     }
+    double getPizzaPrice(){
+        return this.pizzaPrice;
+    }
 }
+
 class Order{
     private String customerName;
-    private boolean orderStatus;
     private ArrayList<Pizza> orderList;
     private double totalPrice;
+    private boolean statusOrder;
 
     Order(String customerName){
-
         this.customerName = customerName;
         this.orderList = new ArrayList<Pizza>();
-        this.orderStatus = false;
         this.totalPrice = 0.00;
+        this.statusOrder = false;
     }
-
-    void addOrder(Pizza pizza){
+     void addOrder(Pizza pizza){
         this.orderList.add(pizza);
     }
-    double calculateTotalPrice(){
-        double totalPrice = 0.00;
-
+    double totalPriceCalculator(){
         for (Pizza pizzaPrice: orderList){
             this.totalPrice += pizzaPrice.getPizzaPrice();
-
         }
         return this.totalPrice;
     }
-    void changeStatus(){
-        this.orderStatus = true;
-        System.out.println("order has been done. ");
+    String orderCompleted(){
+        this.statusOrder = true;
+        return "Completed";
     }
-    void showInfo(){
+    void showOrder(){
         System.out.println("Customer Name: "+this.customerName);
-        int i = 1;
-        for(Pizza pizza: orderList){
-            System.out.println(i+". "+pizza.getPizzaName());
+        System.out.println("Orders:");
+        for (Pizza pizzas: orderList){
+            System.out.println(pizzas.getPizzaName());
         }
-        System.out.println("Total Price: £"+calculateTotalPrice());
-        changeStatus();
-    }
-}
-
-class Main{
-    public static void main(String[] args) {
-        Pizza margaritta = new Pizza("Margaritta", 22.00);
-        Pizza bbqChicken = new Pizza("BBQ Chicken", 43.00);
-        Pizza kiev = new Pizza("Chicken Kiev", 32.00);
-        Order danielOrder = new Order("Daniel");
-
-        danielOrder.addOrder(kiev);
-        danielOrder.addOrder(bbqChicken);
-        danielOrder.showInfo();
-
+        System.out.println("Total Price"+ totalPriceCalculator());
+        System.out.println("Order Status: "+orderCompleted());
 
     }
+
 }
