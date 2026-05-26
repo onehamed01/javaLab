@@ -20,23 +20,22 @@ class Pizza{
 class Order{
     private String customerName;
     private ArrayList<Pizza> orderList;
-    private double totalPrice;
     private boolean statusOrder;
 
     Order(String customerName){
         this.customerName = customerName;
         this.orderList = new ArrayList<Pizza>();
-        this.totalPrice = 0.00;
         this.statusOrder = false;
     }
      void addOrder(Pizza pizza){
         this.orderList.add(pizza);
     }
     double totalPriceCalculator(){
+        double total = 0.00;
         for (Pizza pizzaPrice: orderList){
-            this.totalPrice += pizzaPrice.getPizzaPrice();
+            total += pizzaPrice.getPizzaPrice();
         }
-        return this.totalPrice;
+        return total;
     }
     String orderCompleted(){
         this.statusOrder = true;
@@ -72,6 +71,7 @@ class Main{
         maty.addOrder(kebabPizza);
         maty.addOrder(bbqChicken);
         maty.addOrder(alfangi);
+        maty.showOrder();
         maty.showOrder();
 
 
