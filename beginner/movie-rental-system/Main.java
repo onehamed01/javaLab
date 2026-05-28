@@ -30,14 +30,14 @@ class Movie{
 class Customer{
     private String customerName;
     private ArrayList<Movie> movieListRented;
-    
+
     Customer(String customerName){
         this.customerName = customerName;
-        ArrayList<Movie> movieListRented = new ArrayList<Movie>();
+        this.movieListRented = new ArrayList<Movie>();
     }
     void rentMovie(Movie movie){
         movie.movieChangetoTrueStatus();
-        movieListRented.add(movie);
+        this.movieListRented.add(movie);
     }
     void returnedMovie(){
         for (Movie movie: movieListRented){
@@ -58,5 +58,29 @@ class Customer{
             System.out.println(movie.getMovieTitle());
         }
         System.out.println("Total Price: "+ calculateTotalPrice());
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+        Movie fury = new Movie("Fury", "Action", 44.00);
+        Movie interstellar = new Movie("Interstellar", "Sci-Fi", 49.99);
+        Movie inception = new Movie("Inception", "Sci-Fi", 39.50);
+        Movie theDarkKnight = new Movie("The Dark Knight", "Action", 55.00);
+        Movie pulpFiction = new Movie("Pulp Fiction", "Crime", 29.99);
+        Movie spiritedAway = new Movie("Spirited Away", "Animation", 42.00);
+        Movie parasite = new Movie("Parasite", "Thriller", 35.00);
+        Movie laLaLand = new Movie("La La Land", "Romance", 31.50);
+        Movie getOut = new Movie("Get Out", "Horror", 24.99);
+        Movie grandBudapest = new Movie("The Grand Budapest Hotel", "Comedy", 38.00);
+        Movie gladiator = new Movie("Gladiator", "Drama", 45.00);
+
+        Customer matti = new Customer("Matti");
+        matti.rentMovie(fury);
+        matti.rentMovie(interstellar);
+        matti.rentMovie(getOut);
+        matti.rentMovie(pulpFiction);
+        matti.showRentedMovies();
+
     }
 }
