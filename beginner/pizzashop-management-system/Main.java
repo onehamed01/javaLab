@@ -72,7 +72,6 @@ class Main{
         maty.addOrder(bbqChicken);
         maty.addOrder(alfangi);
         maty.showOrder();
-        maty.showOrder();
 
 
     }
